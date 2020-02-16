@@ -33,7 +33,7 @@ export function _getDeck (deck_id) {
 // Save deck title
 export function _saveDeckTitle(deckTitle) {
   return new Promise((res, rej) => {
-    const deck_id = generateUID
+    const deck_id = generateUID()
 
     setTimeout(() => {
       decks = {
