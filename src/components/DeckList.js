@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Deck from './Deck'
+import DeckPreview from './DeckPreview'
 
 function DeckList({ decks }) {
   
@@ -16,7 +16,7 @@ function DeckList({ decks }) {
       {
         decksIds !== null
           ? decksIds.map(deck_id => (
-          <Deck key={deck_id} deck_id={deck_id} decks={decks}/>
+            <DeckPreview key={deck_id} deck_id={deck_id} decks={decks}/>
           ))
           : <p>You don't have any deck yet</p>
       }

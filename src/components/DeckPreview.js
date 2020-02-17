@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Deck({ decks, deck_id }) {
+function DeckPreview({ decks, deck_id }) {
   return (
     <div style={{ border: '2px solid red' }}>
       <p>{decks[deck_id].title}</p>
@@ -9,4 +9,4 @@ function Deck({ decks, deck_id }) {
   )
 }
 
-export default Deck
+export default DeckPreview
