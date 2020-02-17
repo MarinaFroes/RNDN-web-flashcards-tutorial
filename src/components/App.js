@@ -1,9 +1,11 @@
 import React, { Component }  from 'react'
 import '../App.css'
 import { handleReceiveDecks } from '../redux/actions/decks'
+import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 
 import DeckList from './DeckList'
-import { connect } from 'react-redux'
+import NewDeck from './NewDeck'
 
 class App extends Component {
 
@@ -13,16 +15,23 @@ class App extends Component {
     dispatch(handleReceiveDecks())
   }
   
-
   render() {
+    const { decks } = this.props
     
     return (
       <div>
-        <DeckList />
+        <LoadingBar />
+        <DeckList decks={decks} />
+        <NewDeck />
       </div>
     )
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ decks }) {
+  return {
+    decks
+  }
+}
+export default connect(mapStateToProps)(App);
 
