@@ -73,7 +73,7 @@ export function _saveDeckTitle(deckTitle) {
 }
 
 // Add card to deck
-export function _addCardToDeck({ deck_id, questionText, answerText }) {
+export function _addCardToDeck({ deck_id, question, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       decks = {
@@ -81,8 +81,8 @@ export function _addCardToDeck({ deck_id, questionText, answerText }) {
         [deck_id]: {
           ...decks[deck_id],
           questions: decks[deck_id].questions.concat({
-            questionText,
-            answerText
+            question,
+            answer
           })
         }
       }
