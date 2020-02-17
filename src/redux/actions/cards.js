@@ -4,10 +4,12 @@ import { addCardToDeck } from '../../utils/api'
 export const ADD_CARD = 'ADD_CARD'
 // export const DELETE_CARD = 'DELETE_CARD'
 
-export function addCard(card) {
+export function addCard({ deck_id, question, answer }) {
   return {
     type: ADD_CARD,
-    card
+    deck_id,
+    question,
+    answer
   }
 }
 
