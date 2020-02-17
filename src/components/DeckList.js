@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import DeckPreview from './DeckPreview'
 
@@ -25,5 +26,11 @@ function DeckList({ decks }) {
   
 }
 
+function mapStateToProps({ decks }) {
+  return {
+    decks
+  }
+}
 
-export default DeckList
+
+export default connect(mapStateToProps)(DeckList)
