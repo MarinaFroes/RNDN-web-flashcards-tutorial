@@ -17,8 +17,9 @@ export function handleReceiveDecks() {
   return dispatch => {
     dispatch(showLoading())
 
-    return getDecks().then(({ decks }) => {
-      dispatch(receiveDecks(decks))
+    return getDecks()
+      .then(res => {
+      dispatch(receiveDecks(res))
       dispatch(hideLoading())
     })
   }
@@ -35,17 +36,17 @@ export function handleReceiveSingleDeck(deck_id){
   return dispatch => {
     dispatch(showLoading())
 
-    return dispatch(getDeck(deck_id)).then((deck) => {
-      dispatch(receiveSingleDeck(deck))
+    return getDeck(deck_id).then(res => {
+      dispatch(receiveSingleDeck(res))
       dispatch(hideLoading())
     }) 
   }
 }
 
-export function addDeckTitle(deckTitle) {
+export function addDeckTitle(deck) {
   return {
     type: SAVE_DECK_TITLE,
-    deckTitle
+    deck
   }
 }
 
@@ -53,9 +54,9 @@ export function handleSaveDeckTitle(deckTitle) {
   return dispatch => {
     dispatch(showLoading())
 
-    return dispatch(saveDeckTitle(deckTitle))
-      .then((deckTitle) => {
-        dispatch(addDeckTitle(deckTitle))
+    return saveDeckTitle(deckTitle)
+      .then(res => {
+        dispatch(addDeckTitle(res))
         dispatch(hideLoading())
       })
   }
