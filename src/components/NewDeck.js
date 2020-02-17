@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { handleSaveDeckTitle } from '../redux/actions/decks'
+import { connect } from 'react-redux'
 
 class NewDeck extends Component {
   state = {
@@ -14,20 +15,18 @@ class NewDeck extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-
+    const { dispatch } = this.props
     const { deckTitle } = this.state
 
-    handleSaveDeckTitle(deckTitle)
-      .then(() => {
-        this.setState({
-          deckTitle: ''
-        })
-      })
+    dispatch(handleSaveDeckTitle(deckTitle))
+    
+    this.setState({
+      deckTitle: ''
+    })
   }
 
   render() {
-    console.log('----NEW DECK----')
-    console.log(`deckTitle state: ${this.state.deckTitle}`)
+    const { deckTitle } = this.state
 
     return (
       <div>
@@ -38,7 +37,7 @@ class NewDeck extends Component {
               type="text"
               name="deckTitle"
               id="deckTitle"
-              value={this.state.deckTitle}
+              value={deckTitle}
               placeholder="Title"
               onChange={this.handleChange}
               required
@@ -46,9 +45,10 @@ class NewDeck extends Component {
           </label>
           <button type="submit">Save</button>
         </form>
+        <p>{deckTitle}</p>
       </div>
     )
   }
 }
 
-export default NewDeck
+export default connect()(NewDeck)
