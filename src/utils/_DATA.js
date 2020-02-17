@@ -1,14 +1,36 @@
 let decks = {
-  // "deck_id": {
-  //   id: "deck_id",
-  //   title: "Deck title",
-  //   questions: [
-  //     {
-  //       question: "question Text",
-  //       answer: "answer Text"
-  //     }
-  //   ]
-  // }
+  "wdkp9xk3edalu40frxoigl": {
+    id: "wdkp9xk3edalu40frxoigl",
+    title: "React",
+    questions: [
+      {
+        question: "React Props are like function arguments in JavaScript and attributes in HTML.",
+        answer: true
+      },
+      {
+        question: "When the state object changes, the component re-renders.",
+        answer: true
+      },
+      {
+        question: "The only way to initialize the state object is in the constructor.",
+        answer: false
+      }
+    ]
+  },
+  "e1bz7itvzi8351djcnes7j": {
+    id: "e1bz7itvzi8351djcnes7j",
+    title: "JavaScript",
+    questions: [
+      {
+        question: "JavaScript can change HTML attribute values.",
+        answer: true
+      },
+      {
+        question: "Multi-line comments in JavaScript start with //.",
+        answer: false
+      }
+    ]
+  }
 }
 
 // Generate random deck_id
