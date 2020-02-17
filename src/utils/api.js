@@ -9,8 +9,8 @@ export function getDecks() {
   return _getDecks()
 }
 
-export function getDeck() {
-  return _getDeck()
+export function getDeck(info) {
+  return _getDeck(info)
 }
 
 export function saveDeckTitle(info) {
