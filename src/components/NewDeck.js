@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { handleSaveDeckTitle } from '../redux/actions/decks'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class NewDeck extends Component {
   state = {
-    deckTitle: ''
+    deckTitle: '',
+    toHome: false,
+    deckId: ''
   }
 
   handleChange = (e) => {
@@ -21,12 +24,17 @@ class NewDeck extends Component {
     dispatch(handleSaveDeckTitle(deckTitle))
     
     this.setState({
-      deckTitle: ''
+      deckTitle: '',
+      toHome: true
     })
   }
 
   render() {
     const { deckTitle } = this.state
+
+    if (this.state.toHome === true) {
+      return <Redirect to="/" />
+    }
 
     return (
       <div style={{border: '2px solid blue'}}>
@@ -45,7 +53,6 @@ class NewDeck extends Component {
           </label>
           <button type="submit">Save</button>
         </form>
-        <p>{deckTitle}</p>
       </div>
     )
   }
