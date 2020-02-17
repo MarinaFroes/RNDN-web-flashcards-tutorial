@@ -29,16 +29,16 @@ class NewDeck extends Component {
     const { deckTitle } = this.state
 
     return (
-      <div>
+      <div style={{border: '2px solid blue'}}>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Add deck title:
+            Add new deck:
             <input
               type="text"
               name="deckTitle"
               id="deckTitle"
               value={deckTitle}
-              placeholder="Title"
+              placeholder="Deck title"
               onChange={this.handleChange}
               required
             />
