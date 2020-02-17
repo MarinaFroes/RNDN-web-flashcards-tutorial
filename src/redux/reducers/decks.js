@@ -20,10 +20,11 @@ export default function decks(state = {}, action) {
         ...action.deck
       }
     case SAVE_DECK_TITLE:
+      const { deck } = action
       // This action returns a new deck only with title and id
       return {
         ...state,
-        ...action.deck
+        [deck.id]: deck
       }
     // TODO: Add case DELETE_DECK
     default: 
