@@ -1,30 +1,29 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
-class DeckList extends Component {
+import Deck from './Deck'
 
-  render() {
-    const { decks, deckIds } = this.props
-    console.log('----DECK LIST----')
-    console.log(decks)
-    console.log(deckIds)
+function DeckList({ decks }) {
+  
+  const decksIds = decks ? Object.keys(decks) : null
+  
+  console.log('----DECK LIST----')
+  console.log(decks)
+  console.log(decksIds)
 
-    return (
-      <div>
-        {
-          deckIds.map(deck_id => (
-            <p key={deck_id}>{decks[deck_id].title}</p>
+  return (
+    <div>
+      <p>DECK LIST</p>
+      {
+        decksIds !== null
+          ? decksIds.map(deck_id => (
+          <Deck key={deck_id} deck_id={deck_id} decks={decks}/>
           ))
-        }
-      </div>
-    )
-  }
+          : <p>You don't have any deck yet</p>
+      }
+    </div>
+  )
+  
 }
 
-function mapStateToProps({ decks }) {
-  return {
-    deckIds: Object.keys(decks)
-  }
-}
 
-export default connect(mapStateToProps)(DeckList)
+export default DeckList
