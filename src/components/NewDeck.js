@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { handleSaveDeckTitle } from '../redux/actions/decks'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { generateUID } from '../utils/_DATA'
 
 class NewDeck extends Component {
   state = {
     deckTitle: '',
-    toHome: false,
-    deckId: ''
+    toDeck: false,
+    deck_id: ''
   }
 
   handleChange = (e) => {
@@ -20,20 +21,22 @@ class NewDeck extends Component {
     e.preventDefault()
     const { dispatch } = this.props
     const { deckTitle } = this.state
+    const deck_id = generateUID()
 
-    dispatch(handleSaveDeckTitle(deckTitle))
-    
+    dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
+      
     this.setState({
       deckTitle: '',
-      toHome: true
+      toDeck: true,
+      deck_id
     })
   }
 
   render() {
-    const { deckTitle } = this.state
+    const { deckTitle, deck_id } = this.state
 
-    if (this.state.toHome === true) {
-      return <Redirect to="/" />
+    if (this.state.toDeck === true) {
+      return <Redirect to={`/deck/${deck_id}`} />
     }
 
     return (
@@ -44,7 +47,6 @@ class NewDeck extends Component {
             <input
               type="text"
               name="deckTitle"
-              id="deckTitle"
               value={deckTitle}
               placeholder="Deck title"
               onChange={this.handleChange}
@@ -57,5 +59,11 @@ class NewDeck extends Component {
     )
   }
 }
+
+// function mapStateToProps({ }) {
+//   return {
+
+//   }
+// }
 
 export default connect()(NewDeck)

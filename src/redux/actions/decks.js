@@ -51,11 +51,11 @@ export function addDeckTitle(deck) {
   }
 }
 
-export function handleSaveDeckTitle(deckTitle) {
+export function handleSaveDeckTitle(deckTitle, deck_id) {
   return dispatch => {
     dispatch(showLoading())
 
-    return saveDeckTitle(deckTitle)
+    return saveDeckTitle(deckTitle, deck_id)
       .then(res => {
         dispatch(addDeckTitle(res))
         dispatch(hideLoading())
