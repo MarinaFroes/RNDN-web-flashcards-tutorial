@@ -2,22 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
+import Card from './Card'
+
 class Deck extends Component {
-  handleAddCard = (e) => {
-    e.preventDefault()
-    
-  }
 
-  handleStartQuiz = (e) => {
-    e.preventDefault()
-
-  }
-  
   render() {
     const deck_id = this.props.match.params.deck_id
     const deck = this.props.decks[deck_id]
+    
     console.log('---DECK COMPONENT---')
-    console.log(this.props.decks[deck_id])
+
     if (!deck) {
       return <p>Not found</p>
     }
@@ -26,7 +20,6 @@ class Deck extends Component {
       <div style={{border: '2px solid green'}}>
         <p>{deck.title}</p>
         <p>{deck.questions.length} cards </p>
-        {/* <Link to="/newcard">Add card</Link> */}
         <Link to={{
           pathname: "/newcard",
           state: {
@@ -34,6 +27,18 @@ class Deck extends Component {
           }
         }}>Add card</Link>
         <button onClick={this.handleStartQuiz}>Start quiz</button>
+        {
+          deck.questions.length === 0 
+            ? <p>You don't have any cards yet</p>
+            : deck.questions.map((card, index) => (
+              <Card
+                key={index}
+                card={card}
+                deck={deck}
+                index={index}
+              />
+            ))
+        }
       </div>
     )
   }
