@@ -10,6 +10,7 @@ import NewDeck from './NewDeck'
 import NewCard from './NewCard'
 import Deck from './Deck'
 import Nav from './Nav'
+import Quiz from './Quiz'
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
             <Route path="/newdeck" exact component={NewDeck} />
             <Route path="/newcard" exact component={NewCard} />
             <Route path="/deck/:deck_id" component={Deck} />
+            <Route path="/quiz/:deck_id" component={Quiz} />
           </div>
         </>
       </Router>
