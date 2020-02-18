@@ -1,6 +1,6 @@
 let decks = {
   "wdkp9xk3edalu40frxoigl": {
-    id: "wdkp9xk3edalu40frxoigl",
+    deck_id: "wdkp9xk3edalu40frxoigl",
     title: "React",
     questions: [
       {
@@ -18,7 +18,7 @@ let decks = {
     ]
   },
   "e1bz7itvzi8351djcnes7j": {
-    id: "e1bz7itvzi8351djcnes7j",
+    deck_id: "e1bz7itvzi8351djcnes7j",
     title: "JavaScript",
     questions: [
       {
@@ -61,12 +61,12 @@ export function _saveDeckTitle(deckTitle) {
       decks = {
         ...decks,
         [deck_id]: {
-          id: deck_id,
+          deck_id: deck_id,
           title: deckTitle,
           questions: []
         }
       }
-
+      // Return the new deck
       res(decks[deck_id])
     }, 1000)
   })
@@ -74,6 +74,12 @@ export function _saveDeckTitle(deckTitle) {
 
 // Add card to deck
 export function _addCardToDeck({ deck_id, question, answer }) {
+  console.log('---ADD-CARD-TO-DECK---')
+  console.log(deck_id)
+  console.log(question)
+  console.log(answer)
+  console.log(decks[deck_id])
+
   return new Promise((res, rej) => {
     setTimeout(() => {
       decks = {
@@ -86,7 +92,8 @@ export function _addCardToDeck({ deck_id, question, answer }) {
           })
         }
       }
-
+      console.log(decks[deck_id])
+      // Returns the updated deck
       res(decks[deck_id])
     }, 500)
   })
