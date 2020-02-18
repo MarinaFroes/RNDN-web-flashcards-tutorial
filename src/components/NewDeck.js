@@ -40,7 +40,7 @@ class NewDeck extends Component {
       <div style={{border: '2px solid blue'}}>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Add new deck:
+            Add deck title:
             <input
               type="text"
               name="deckTitle"
@@ -51,7 +51,7 @@ class NewDeck extends Component {
               required
             />
           </label>
-          <button type="submit">Save</button>
+          <button type="submit">Create deck</button>
         </form>
       </div>
     )
