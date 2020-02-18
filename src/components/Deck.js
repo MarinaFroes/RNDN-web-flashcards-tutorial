@@ -7,8 +7,9 @@ import Card from './Card'
 class Deck extends Component {
 
   render() {
+    const { decks } = this.props
     const deck_id = this.props.match.params.deck_id
-    const deck = this.props.decks[deck_id]
+    const deck = decks[deck_id]
     
     console.log('---DECK COMPONENT---')
 
@@ -26,7 +27,9 @@ class Deck extends Component {
             deck_id: deck_id
           }
         }}>Add card</Link>
-        <button onClick={this.handleStartQuiz}>Start quiz</button>
+        
+        <Link to={`/quiz/${deck_id}`}>Start quiz</Link>
+        
         {
           deck.questions.length === 0 
             ? <p>You don't have any cards yet</p>
