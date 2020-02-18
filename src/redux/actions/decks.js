@@ -5,6 +5,7 @@ export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const RECEIVE_SINGLE_DECK = 'RECEIVE_SINGLE_DECK'
 export const SAVE_DECK_TITLE = 'SAVE_DECK_TITLE'
 export const DELETE_DECK = 'DELETE_DECK'
+export const UPDATE_DECKS = 'UPDATE_DECKS'
 
 export function receiveDecks(decks) {
   return {
@@ -57,6 +58,24 @@ export function handleSaveDeckTitle(deckTitle) {
     return saveDeckTitle(deckTitle)
       .then(res => {
         dispatch(addDeckTitle(res))
+        dispatch(hideLoading())
+      })
+  }
+}
+
+export function updateDecks(decks) {
+  return {
+    type: UPDATE_DECKS,
+    decks
+  }
+}
+
+export function handleUpdateDecks() {
+  return dispatch => {
+    dispatch(showLoading())
+    return getDecks()
+      .then(res => {
+        dispatch(updateDecks(res))
         dispatch(hideLoading())
       })
   }
