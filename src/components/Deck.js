@@ -11,10 +11,8 @@ class Deck extends Component {
     const deck_id = this.props.match.params.deck_id
     const deck = decks[deck_id]
     
-    console.log('---DECK COMPONENT---')
-
     if (!deck) {
-      return <p>Not found</p>
+      return <p>Loading</p>
     }
 
     return (

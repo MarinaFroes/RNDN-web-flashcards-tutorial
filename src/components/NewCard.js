@@ -42,7 +42,7 @@ class NewCard extends Component {
   render() {
     const { question, answer, toDeck } = this.state
     const { deck_id } = this.props.location.state
-    console.log(deck_id)
+
     if (toDeck === true) {
       return <Redirect to={`/deck/${deck_id}`} />
     }

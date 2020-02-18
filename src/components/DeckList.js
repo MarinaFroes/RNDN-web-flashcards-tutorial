@@ -7,10 +7,6 @@ function DeckList({ decks }) {
   
   const decksIds = decks ? Object.keys(decks) : null
   
-  console.log('----DECK LIST----')
-  console.log(decks)
-  console.log(decksIds)
-
   return (
     <div>
       <p>DECK LIST</p>
@@ -31,6 +27,5 @@ function mapStateToProps({ decks }) {
     decks
   }
 }
-
 
 export default connect(mapStateToProps)(DeckList)

@@ -60,10 +60,4 @@ class NewDeck extends Component {
   }
 }
 
-// function mapStateToProps({ }) {
-//   return {
-
-//   }
-// }
-
 export default connect()(NewDeck)
