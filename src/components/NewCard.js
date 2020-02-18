@@ -18,11 +18,12 @@ class NewCard extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { dispatch, deck_id } = this.props
+    const { dispatch } = this.props
     const { question, answer } = this.state
+    const { deck_id } = this.props.location.state
 
     const card = {
-      id: deck_id,
+      deck_id,
       question,
       answer
     }
@@ -38,8 +39,8 @@ class NewCard extends Component {
 
   render() {
     const { question, answer, toDeck } = this.state
-    const { deck_id } = this.props
-
+    const { deck_id } = this.props.location.state
+    console.log(deck_id)
     if (toDeck === true) {
       return <Redirect to={`/deck/${deck_id}`} />
     }
