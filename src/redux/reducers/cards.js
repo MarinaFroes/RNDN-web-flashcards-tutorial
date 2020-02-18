@@ -6,15 +6,13 @@ import {
 export default function cards(state = {}, action) {
   switch (action.type) {
     case ADD_CARD:
-      const { deck_id, question, answer } = action
+      const { deck } = action
+      const { deck_id } = deck
+
       return {
         ...state,
         [deck_id]: {
-          ...state.decks[deck_id],
-          questions: state.decks[deck_id].questions.concat({
-            question,
-            answer
-          })
+          ...state.deck
         }
       }
     // TODO: Add case DELETE_CARD
