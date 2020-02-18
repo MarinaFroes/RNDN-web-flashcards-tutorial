@@ -14,6 +14,10 @@ let decks = {
       {
         question: "The only way to initialize the state object is in the constructor.",
         answer: false
+      },
+      {
+        question: "JSX is typesafe.",
+        answer: true
       }
     ]
   },
