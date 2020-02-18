@@ -38,7 +38,7 @@ let decks = {
 }
 
 // Generate random deck_id
-function generateUID () {
+export function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 
@@ -57,10 +57,9 @@ export function _getDeck (deck_id) {
 }
 
 // Save deck title
-export function _saveDeckTitle(deckTitle) {
+export function _saveDeckTitle({deckTitle, deck_id}) {
   return new Promise((res, rej) => {
-    const deck_id = generateUID()
-
+    
     setTimeout(() => {
       decks = {
         ...decks,
