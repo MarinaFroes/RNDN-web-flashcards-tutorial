@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { handleAddCard } from '../redux/actions/cards'
+import { handleUpdateDecks } from '../redux/actions/decks'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
@@ -29,6 +30,7 @@ class NewCard extends Component {
     }
 
     dispatch(handleAddCard(card))
+    dispatch(handleUpdateDecks())
 
     this.setState({
       question: '',
