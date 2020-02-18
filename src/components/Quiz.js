@@ -73,7 +73,7 @@ class Quiz extends Component {
             ) : (
               <div>
                 <p>You finished the quiz</p>
-                <p>You got {this.state.correctAnswers} correct answers</p>
+                <p>You got {this.state.correctAnswers / deck.questions.length * 100}% of correct answers</p>
                 <button onClick={this.handleBackToDeck}>Back to deck</button>
               </div>
             )
