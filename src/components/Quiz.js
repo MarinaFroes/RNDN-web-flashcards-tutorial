@@ -46,6 +46,15 @@ class Quiz extends Component {
     })
   }
 
+  handleRestartQuiz = e => {
+    e.preventDefault()
+
+    this.setState({
+      index: 0,
+      correctAnswers: 0
+    })
+  }
+
   render() {
     const deck_id = this.props.match.params.deck_id
     const deck = this.props.decks[deck_id]
@@ -74,6 +83,7 @@ class Quiz extends Component {
               <div>
                 <p>You finished the quiz</p>
                 <p>You got {this.state.correctAnswers / deck.questions.length * 100}% of correct answers</p>
+                <button onClick={this.handleRestartQuiz}>Restart quiz</button>
                 <button onClick={this.handleBackToDeck}>Back to deck</button>
               </div>
             )
